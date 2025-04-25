@@ -5,9 +5,26 @@ capitals = {
 
 #Nested list in dictionary
 
-travel_log = {
-    "France": ["Paris", "Lille", "Dijion"],
+travel_log_one= {
+    "France": ["Paris", "Lille", "Dijon"],
     "Germany": ["Stuttgart", "Berlin"],
 
 }
-print (travel_log["France"][1]) #prints Lille using the key value "France"
+print (travel_log_one["France"][1]) #prints Lille using the key value "France"
+
+
+nested_list = ["A", "B", ["C", "D"]]
+print(nested_list[2][1])
+
+travel_log = {
+    "France": {
+        "cities_visited": ["Paris", "Lille", "Dijon"],
+        "total_visits":12
+    } ,
+    "Germany": {
+        "cities_visited": ["Berlin", "Hamburg", "Stuttgart"],
+        "total_visits":5
+    } ,
+}
+
+print(travel_log["Germany"]["cities_visited"][2])
