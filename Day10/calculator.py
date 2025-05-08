@@ -1,7 +1,5 @@
 """A simple calculator app"""
 import art
-from socket import EAGAIN
-
 
 #operation functions
 def add(n1, n2):
@@ -33,7 +31,6 @@ def calculator():
     f_num = float(input("What is the first number?: "))
 
     while should_accumulate:
-
 
         for symbol in operations:
             print(symbol)
