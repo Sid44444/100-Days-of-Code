@@ -1,4 +1,5 @@
 """A simple calculator app"""
+import art
 from socket import EAGAIN
 
 
@@ -27,6 +28,7 @@ operations = {
 #print (operations["*"](4, 8))
 
 def calculator():
+    print(art.logo)
     should_accumulate = True
     f_num = float(input("What is the first number?: "))
 
@@ -46,7 +48,7 @@ def calculator():
         else:
             should_accumulate = False
             print("\n" * 20)
-            calculator()#calling a function within a function to begin again (recursion)
+            calculator()#calling a function within a function to begin again (recursion). Another while loop would have worked too.
 
 
 calculator()#call function to start the program
