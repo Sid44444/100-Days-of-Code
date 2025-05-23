@@ -1,4 +1,6 @@
 import random
+from art import logo
+
 EASY_LEVEL_TURNS = 10
 HARD_LEVEL_TURNS = 5
 #TODO- ASCII art
@@ -30,15 +32,14 @@ def level_selected():
     else:
         return HARD_LEVEL_TURNS
 
-
 def start_new_game():
+    print (logo)
     print ("Welcome to the Number Guessing Game!")
     print ("I'm thinking of a number between 1 and 100")
     actual_num = random.randint(1, 100)
     print(f"Pssst, the correct answer is {actual_num}")
 
     turns = level_selected()
-
 
     #Repeat the guessing functionality if they get it wrong.
     guess = 0
@@ -50,26 +51,5 @@ def start_new_game():
         if turns  == 0:
             print("You run out of guesses, you lose")
             return
-        
+
 start_new_game()
-
-
-def end_game(user_guess, actual_num):
-    if user_guess == actual_num:
-        question = input("type 'y' for another game or 'n' to exit: ")
-        if question == 'y':
-            start_new_game()
-        else:
-            print("Goodbye")
-
-
-
-#level_selected()
-#number_to_guess()
-
-    #if attempt_to_guess == num:
-
-
-
-
-
