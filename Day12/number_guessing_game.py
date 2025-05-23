@@ -37,7 +37,7 @@ def start_new_game():
     print ("Welcome to the Number Guessing Game!")
     print ("I'm thinking of a number between 1 and 100")
     actual_num = random.randint(1, 100)
-    print(f"Pssst, the correct answer is {actual_num}")
+    #print(f"Pssst, the correct answer is {actual_num}")
 
     turns = level_selected()
 
@@ -49,7 +49,7 @@ def start_new_game():
         guess = int(input("Make a guess:"))
         turns = guess_feedback(guess, actual_num, turns)
         if turns  == 0:
-            print("You run out of guesses, you lose")
+            print(f"You run out of guesses, you lose. The number was {actual_num}.")
             return
 
 start_new_game()
