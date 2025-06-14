@@ -25,28 +25,72 @@ MENU = {
 }
 
 resources = {
-    "water": 300,
-    "milk": 200,
-    "coffee": 100,
+    "water": 1000,
+    "milk": 800,
+    "coffee": 300,
 }
 
+money = 0
+
+def is_resources_sufficient(order_ingredients):
+    """Returns True if the order can be made, False if the ingredients are insufficient"""
+    for item in order_ingredients:
+        if order_ingredients[item] >= resources[item]:
+            print(f"Sorry! there is not enough {item} in the machine.")
+            return False
+    return True
 
 
-#TODO: 1 Prompt user by asking which drink they would like while loop activated
-#TODO: 2 Break while loop in input is 'off' to switch the machine off
-#TODO: 3 Once drink is dispensed the while loop should star again
-#TODO: 4 Report should be printed to screen when 'report' typed in to input listing current resource values
-#TODO: 5 Check resources sufficient to make drink order
-#TODO: 6 If insufficient resources print "Sorry there is not enough {ingredient}."
-#TODO: 7 If sufficient ingredients, program to prompt user to insert coins
-#TODO: 8 Quarters = $0.25, dimes = $0.10, nickles = $0.05, pennies = $0.01
-#TODO: 9 Calculate the monetary value of the coins inserted eg, 3 quarters, 2 dimes, 1 nickel
-#TODO: 10 Check transaction, has the user inserted enough money?
-#TODO: 11 If not enough money "Sorry that's not enough money. Money refunded."
-#TODO: 12 If user has inserted enough money cost of drink added to profit of machine (for the report)
-#TODO: 13 if user has inserted too much money the machine should offer change.
-#TODO: 14 "Here is $2.45 dollars in change." Round to 2 decimal places
-#TODO: 15 Make a coffee. If transaction is successful and enough resources the ingredients should be deducted from the coffee machine resources
-#TODO: 16 Once resources have been deducted tell the user "Here is your latte. Enjoy!"
-#
+def process_coins():
+    """Returns the total calculated from coins inserted"""
+    print("Please insert coins.")
+    total = int(input("how many quarters?: ")) * 0.25
+    total += int(input("how many dimes?: ")) * 0.10
+    total += int(input("how many nickles?: ")) * 0.05
+    total += int(input("how many pennies?:  ")) * 0.01
+    return total
+
+def is_transaction_successful(money_received, drink_cost):
+    """ Return True when the payment is accepted, or False if money is insufficient."""
+    if money_received >= drink_cost:
+        change = round(money_received - drink_cost, 2)
+        print (f"Here is ${change} in change")
+        global money
+        money += drink_cost
+        return True
+    else:
+        print("Sorry that's not enough money, have a refund.")
+        return False
+
+def make_drink(drink_name, order_ingredients):
+    """Subtract the ingredients form the resources"""
+    for item in order_ingredients:
+        resources[item] -= order_ingredients[item]
+    print(f"Here is your {drink_name}.")
+
+machine_on = True
+
+while machine_on:
+    """Functionality of machine when on "off", "report", "drink"""
+    user_input = input ("What would you like? (espresso/latte/cappuccino): ")
+    if user_input == "off":
+        print ("Goodbye")
+        machine_on = False
+    elif user_input == "report":
+        print(f"Water: {resources['water']}ml")
+        print(f"Milk: {resources['milk']}ml")
+        print(f"Coffee: {resources['coffee']}g")
+        print(f"Money: ${money}")
+    else:
+        drink = MENU[user_input]
+        if is_resources_sufficient(drink["ingredients"]):
+            payment = process_coins()
+            if is_transaction_successful(payment, drink["cost"]):
+                make_drink(user_input, drink["ingredients"])
+
+
+
+
+
+
 
