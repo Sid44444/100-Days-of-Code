@@ -1,31 +1,35 @@
-from turtle import Turtle, Screen
+from turtle import Screen
 import turtle as t
 import random
 
-t = t.Turtle()
+tim = t.Turtle()
+t.colormode(255)
+
+def random_color():
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    random_color = (r,g,b)
+    return random_color
+
 screen = Screen()
 
-#line thickness set to 10
-t.width(10)
-#t.forward(300)
+tim.width(10)#line thickness set to 10
 
-t.speed ("fastest")
-
-colours = ["CornflowerBlue", "DarkOrchid", "IndianRed", "DeepSkyBlue", "LightSeaGreen", "wheat", "SlateGray", "SeaGreen"]
+tim.speed ("fastest")
 
 #centralise pen
-t.penup()
-t.goto(0,0)
-t.pendown()
+tim.penup()
+tim.goto(0,0)
+tim.pendown()
 
-#draw a random walk ( mathematical object). Thickness of line, speed up turtle,
+#draw a random walk ( mathematical object). Thickness of line, speed up turtle, random colour and random direction
 
-#set directions as N,S,E and W
-directions = [0, 90, 180, 270]
+directions = [0, 90, 180, 270]#set directions as N,S,E and W
 
 for _ in range (300): #set to draw 300 times
-    t.color(random.choice(colours))
-    t.forward(20)
-    t.setheading(random.choice(directions))#chooses a random direction
+    tim.color(random_color())#uses the tuple to create random colours
+    tim.forward(20)
+    tim.setheading(random.choice(directions))#chooses a random direction
 
 screen.exitonclick()
