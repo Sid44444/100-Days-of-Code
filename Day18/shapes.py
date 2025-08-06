@@ -8,6 +8,11 @@ tim.color("red")
 
 colours = ["BlueViolet", "brown1", "cyan1", "DarkGoldenrod", "DarkOliveGreen1", "coral2", "DeepPink2"]
 
+#code below to move starting point of turtle to reposition shapes
+tim.penup()
+tim.goto(-50,150)
+tim.pendown()
+
 def draw_shape(num_sides):
     angle = 360 / num_sides
     for _ in range(num_sides):
