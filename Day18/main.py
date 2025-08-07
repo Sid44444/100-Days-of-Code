@@ -1,24 +1,41 @@
-from turtle import Turtle, Screen
 
-timmy_the_turtle = Turtle()
-timmy_the_turtle.shape("turtle")
-timmy_the_turtle.color("red")
+import turtle as turtle_module
+import random
+#import colorgram
 
-#for loop repeating steps to draw a square
-for _ in range(4):
+#rgb_colors = []
+#colors = colorgram.extract('image.jpg', 30)
+#for color in colors:
+    #r = color.rgb.r
+    #g = color.rgb.g
+    #b = color.rgb.b
+    #new_color = (r, g, b)
+    #rgb_colors.append(new_color)
 
-    timmy_the_turtle.forward(100)
-    timmy_the_turtle.right(90)
+#print (rgb_colors)
+turtle_module.colormode(255)
+tim = turtle_module.Turtle()
+tim.hideturtle()
+tim.penup()
+tim.speed ("fastest")
+screen = turtle_module.Screen()
+colour_list = [(124, 181, 211), (199, 174, 15), (247, 226, 234), (222, 232, 240), (26, 121, 168), (178, 13, 44), (237, 204, 87), (239, 148, 73), (220, 122, 162), (232, 241, 235), (25, 144, 72), (216, 80, 124), (7, 172, 211), (214, 59, 26), (66, 21, 54), (239, 77, 44), (247, 156, 189), (8, 184, 151), (161, 56, 107), (10, 30, 72), (74, 28, 23), (128, 208, 234), (13, 48, 132), (167, 193, 164), (101, 116, 184), (252, 156, 151), (167, 24, 19), (3, 88, 57), (111, 217, 215)]
+
+tim.setheading(225)
+tim.forward(300)
+tim.setheading(0)
+number_of_dots = 100
+
+for dot_count in range(1, number_of_dots + 1):
+    tim.dot(20, random.choice(colour_list))
+    tim.forward(50)
+
+    if dot_count % 10 == 0:
+        tim.setheading(90)
+        tim.forward(50)
+        tim.setheading(180)
+        tim.forward(500)
+        tim.setheading(0)
 
 
-
-
-
-
-
-
-
-
-
-screen = Screen()
 screen.exitonclick()
